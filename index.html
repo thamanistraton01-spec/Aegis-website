@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aegis Financial Systems | Credit Forensics for African Lenders</title>
+  <meta name="description" content="Aegis Financial Systems provides whitebox credit forensics and quantitative underwriting infrastructure for African lenders, SACCOs, and MFIs via the ATLAS engine.">
+  <meta name="keywords" content="credit scoring Kenya, SME credit analysis, SACCO underwriting, MFI risk, M-Pesa credit scoring, African fintech, credit forensics">
+  <meta property="og:title" content="Aegis Financial Systems | Credit Forensics for African Lenders">
+  <meta property="og:description" content="Institutional-grade SME credit forensics powered by the ATLAS engine. Whitebox scoring, M-Pesa integration, fraud detection.">
+  <meta property="og:type" content="website">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #00050D;
+      --bg-card: #000d1a;
+      --bg-hover: #001122;
+      --border: #0a2a4a;
+      --border-mid: #1e3a5f;
+      --accent: #00ccff;
+      --accent-dim: #004488;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --text-faint: #334155;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text-secondary); line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem; border-bottom: 1px solid var(--border);
+      background: var(--bg); position: sticky; top: 0; z-index: 100;
+    }
+    .brand-name { font-size: 15px; font-weight: 600; color: var(--text-primary); letter-spacing: 3px; }
+    .brand-sub { font-size: 10px; color: var(--accent-dim); letter-spacing: 4px; margin-top: 2px; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { font-size: 12px; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      border: 1px solid var(--accent-dim); color: var(--accent);
+      padding: 8px 18px; border-radius: 6px; font-size: 11px;
+      letter-spacing: 2px; cursor: pointer; background: transparent;
+      transition: background .2s; font-family: inherit;
+    }
+    .nav-cta:hover { background: #001833; }
+
+    /* TICKER */
+    .ticker-wrap { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: .7rem 0; overflow: hidden; background: var(--bg-card); }
+    .ticker { display: flex; gap: 3rem; animation: tick 28s linear infinite; white-space: nowrap; width: max-content; }
+    @keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .tick-item { font-size: 10px; letter-spacing: 3px; color: var(--text-faint); display: flex; align-items: center; gap: .8rem; }
+    .tick-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent-dim); flex-shrink: 0; }
+
+    /* HERO */
+    .hero { padding: 6rem 3rem 5rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(#0a2a4a18 1px, transparent 1px), linear-gradient(90deg, #0a2a4a18 1px, transparent 1px);
+      background-size: 52px 52px;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 720px; }
+    .eyebrow { font-size: 10px; letter-spacing: 5px; color: var(--accent-dim); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+    .eyebrow-line { width: 32px; height: 1px; background: var(--accent-dim); }
+    .hero h1 { font-size: 46px; font-weight: 600; line-height: 1.15; color: var(--text-primary); margin-bottom: 1.5rem; }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero-desc { font-size: 15px; color: var(--text-muted); line-height: 1.9; max-width: 540px; margin-bottom: 2.5rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-main {
+      background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-dim);
+      padding: 13px 28px; border-radius: 6px; font-size: 12px; letter-spacing: 2px;
+      cursor: pointer; font-weight: 600; font-family: inherit; transition: all .2s;
+    }
+    .btn-main:hover { background: #005599; border-color: var(--accent); }
+    .btn-ghost {
+      background: transparent; color: var(--text-muted); border: 1px solid var(--border);
+      padding: 13px 28px; border-radius: 6px; font-size: 12px; letter-spacing: 2px;
+      cursor: pointer; font-family: inherit; transition: all .2s;
+    }
+    .btn-ghost:hover { color: var(--text-primary); border-color: var(--border-mid); }
+    .hero-stats { display: flex; margin-top: 4rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .hstat { flex: 1; padding: 1.3rem; border-right: 1px solid var(--border); text-align: center; }
+    .hstat:last-child { border-right: none; }
+    .hstat-num { font-size: 22px; font-weight: 600; color: var(--accent); }
+    .hstat-label { font-size: 10px; color: var(--text-faint); letter-spacing: 2px; margin-top: 4px; }
+
+    /* SECTIONS */
+    section { padding: 5rem 3rem; border-bottom: 1px solid var(--border); }
+    .sec-tag { font-size: 10px; letter-spacing: 4px; color: var(--accent-dim); margin-bottom: .8rem; display: flex; align-items: center; gap: 10px; }
+    .sec-tag-line { width: 24px; height: 1px; background: var(--accent-dim); }
+    .sec-title { font-size: 30px; font-weight: 600; color: var(--text-primary); margin-bottom: .8rem; line-height: 1.3; }
+    .sec-sub { font-size: 14px; color: var(--text-muted); line-height: 1.9; max-width: 500px; }
+
+    /* PILLARS */
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 2.5rem; }
+    .pillar { background: var(--bg-card); padding: 1.8rem 1.5rem; cursor: pointer; transition: background .2s; }
+    .pillar:hover, .pillar.active { background: var(--bg-hover); }
+    .pillar-icon { width: 34px; height: 34px; border-radius: 6px; background: #001833; border: 1px solid var(--accent-dim); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 16px; }
+    .pillar h3 { font-size: 13px; font-weight: 600; color: #7adfff; letter-spacing: 1px; margin-bottom: .5rem; }
+    .pillar p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+    .pillar-detail { background: var(--bg-card); border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem; display: none; }
+    .pillar-detail.show { display: block; }
+    .pillar-detail p { font-size: 13px; color: var(--text-secondary); line-height: 1.9; }
+    .pillar-detail strong { color: var(--accent); font-weight: 500; }
+
+    /* PROCESS */
+    .process-steps { margin-top: 2.5rem; }
+    .pstep { display: flex; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+    .pstep:last-child { border-bottom: none; }
+    .pstep-num { font-size: 11px; letter-spacing: 2px; color: var(--accent-dim); min-width: 28px; padding-top: 2px; }
+    .pstep-title { font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-bottom: .3rem; transition: color .2s; }
+    .pstep:hover .pstep-title, .pstep.active .pstep-title { color: var(--accent); }
+    .pstep-body { font-size: 13px; color: var(--text-muted); line-height: 1.8; max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .pstep.active .pstep-body { max-height: 120px; }
+    .pstep-arrow { font-size: 11px; color: var(--border-mid); transition: transform .2s; padding-top: 3px; }
+    .pstep.active .pstep-arrow { transform: rotate(90deg); color: var(--accent); }
+
+    /* PRICING */
+    .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .plan { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.8rem; display: flex; flex-direction: column; }
+    .plan.featured { border-color: var(--accent-dim); }
+    .plan-badge { font-size: 9px; letter-spacing: 3px; color: var(--accent); background: #001122; border: 1px solid var(--accent-dim); padding: 3px 12px; border-radius: 4px; display: inline-block; margin-bottom: 1rem; width: fit-content; }
+    .plan-tier { font-size: 10px; letter-spacing: 3px; color: var(--text-faint); margin-bottom: .4rem; }
+    .plan-headline { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: .4rem; }
+    .plan-price { font-size: 12px; color: var(--text-muted); margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
+    .plan-features { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.5rem; flex: 1; }
+    .feat { font-size: 12px; color: var(--text-muted); display: flex; gap: 8px; align-items: flex-start; }
+    .feat-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-dim); flex-shrink: 0; margin-top: 5px; }
+    .plan-btn { width: 100%; padding: 10px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); border-radius: 6px; font-size: 11px; letter-spacing: 2px; cursor: pointer; font-family: inherit; transition: all .2s; margin-top: auto; }
+    .plan.featured .plan-btn { border-color: var(--accent-dim); color: var(--accent); }
+    .plan-btn:hover { border-color: var(--accent-dim); color: var(--accent); }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; margin-top: 2.5rem; }
+    .contact-left h3 { font-size: 13px; font-weight: 500; color: #7adfff; letter-spacing: 2px; margin-bottom: .8rem; }
+    .contact-left p { font-size: 13px; color: var(--text-muted); line-height: 1.9; margin-bottom: 1.5rem; }
+    .cinfo { display: flex; align-items: center; gap: 10px; margin-bottom: .8rem; }
+    .cdot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-dim); flex-shrink: 0; }
+    .ctext { font-size: 12px; color: var(--text-faint); }
+    .cform { display: flex; flex-direction: column; gap: .9rem; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .flabel { font-size: 10px; letter-spacing: 2px; color: var(--text-faint); display: block; margin-bottom: 5px; }
+    .finput {
+      width: 100%; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 10px 13px; color: var(--text-primary);
+      font-size: 13px; outline: none; font-family: inherit; transition: border-color .2s;
+    }
+    .finput:focus { border-color: var(--accent-dim); }
+    select.finput option { background: var(--bg-card); }
+    textarea.finput { resize: none; height: 85px; }
+    .fsubmit {
+      background: var(--accent-dim); border: 1px solid var(--accent); color: var(--accent);
+      padding: 12px; border-radius: 6px; font-size: 11px; letter-spacing: 2px;
+      cursor: pointer; font-weight: 600; width: 100%; font-family: inherit; transition: background .2s;
+    }
+    .fsubmit:hover { background: #005599; }
+    .success-msg {
+      display: none; background: #001833; border: 1px solid var(--accent-dim);
+      border-radius: 6px; padding: 1.5rem; text-align: center;
+      color: var(--accent); font-size: 13px; letter-spacing: 1px; line-height: 1.8;
+    }
+
+    /* FOOTER */
+    footer { padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; }
+    .foot-brand { font-size: 13px; letter-spacing: 3px; color: var(--text-faint); }
+    .foot-copy { font-size: 10px; color: var(--text-faint); letter-spacing: 1px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links a { display: none; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .hero h1 { font-size: 30px; }
+      .hero-stats { flex-wrap: wrap; }
+      .hstat { min-width: 50%; border-bottom: 1px solid var(--border); }
+      section { padding: 3rem 1.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .frow { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: .5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div>
+    <div class="brand-name">AEGIS FINANCIAL SYSTEMS</div>
+    <div class="brand-sub">ATLAS ENGINE &nbsp;·&nbsp; CREDIT FORENSICS</div>
+  </div>
+  <div class="nav-links">
+    <a onclick="document.getElementById('forensics').scrollIntoView({behavior:'smooth'})">The Engine</a>
+    <a onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'})">How It Works</a>
+    <a onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">REQUEST ACCESS</button>
+  </div>
+</nav>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="tick-item"><span class="tick-dot"></span>WHITEBOX SCORING ENGINE</span>
+    <span class="tick-item"><span class="tick-dot"></span>OPEN-FINANCE UNDERWRITING</span>
+    <span class="tick-item"><span class="tick-dot"></span>SYNTHETIC P&L DETECTION</span>
+    <span class="tick-item"><span class="tick-dot"></span>M-PESA CASH VELOCITY</span>
+    <span class="tick-item"><span class="tick-dot"></span>TOXIC LEVERAGE FLAGS</span>
+    <span class="tick-item"><span class="tick-dot"></span>SECTOR-AWARE BENCHMARKS</span>
+    <span class="tick-item"><span class="tick-dot"></span>AUDIT-READY DECISIONS</span>
+    <span class="tick-item"><span class="tick-dot"></span>QUANTITATIVE UNDERWRITING</span>
+    <span class="tick-item"><span class="tick-dot"></span>WHITEBOX SCORING ENGINE</span>
+    <span class="tick-item"><span class="tick-dot"></span>OPEN-FINANCE UNDERWRITING</span>
+    <span class="tick-item"><span class="tick-dot"></span>SYNTHETIC P&L DETECTION</span>
+    <span class="tick-item"><span class="tick-dot"></span>M-PESA CASH VELOCITY</span>
+    <span class="tick-item"><span class="tick-dot"></span>TOXIC LEVERAGE FLAGS</span>
+    <span class="tick-item"><span class="tick-dot"></span>SECTOR-AWARE BENCHMARKS</span>
+    <span class="tick-item"><span class="tick-dot"></span>AUDIT-READY DECISIONS</span>
+    <span class="tick-item"><span class="tick-dot"></span>QUANTITATIVE UNDERWRITING</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="eyebrow-line"></span>INSTITUTIONAL CREDIT FORENSICS</div>
+    <h1>Quantitative underwriting<br>for the <em>African economy.</em></h1>
+    <p class="hero-desc">Aegis Financial Systems provides whitebox credit forensics infrastructure for Tier-2 lenders, SACCOs, and MFIs. ATLAS delivers forensic SME risk scores, fraud detection, and audit-ready lending recommendations — without the black box.</p>
+    <div class="hero-actions">
+      <button class="btn-main" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">REQUEST INSTITUTIONAL ACCESS</button>
+      <button class="btn-ghost" onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'})">SEE HOW IT WORKS</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num">Whitebox</div><div class="hstat-label">Explainable scoring</div></div>
+      <div class="hstat"><div class="hstat-num">&lt; 60s</div><div class="hstat-label">Full portfolio scan</div></div>
+      <div class="hstat"><div class="hstat-num">M-Pesa</div><div class="hstat-label">Native integration</div></div>
+      <div class="hstat"><div class="hstat-num">7+</div><div class="hstat-label">Fraud heuristics</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="forensics">
+  <div class="sec-tag"><span class="sec-tag-line"></span>THE ATLAS ENGINE</div>
+  <div class="sec-title">Four forensic pillars.<br>One risk decision.</div>
+  <p class="sec-sub">Click each pillar to understand what ATLAS analyses — and why it matters to your credit committee.</p>
+  <div class="pillars">
+    <div class="pillar active" onclick="showPillar(0)">
+      <div class="pillar-icon">&#9783;</div>
+      <h3>Financial History</h3>
+      <p>Multi-year revenue trajectory and growth pattern analysis.</p>
+    </div>
+    <div class="pillar" onclick="showPillar(1)">
+      <div class="pillar-icon">&#8771;</div>
+      <h3>Leverage Forensics</h3>
+      <p>Debt-to-revenue stress testing against sector benchmarks.</p>
+    </div>
+    <div class="pillar" onclick="showPillar(2)">
+      <div class="pillar-icon">&#9650;</div>
+      <h3>Cash Velocity</h3>
+      <p>Open-finance M-Pesa transaction flow and runway scoring.</p>
+    </div>
+    <div class="pillar" onclick="showPillar(3)">
+      <div class="pillar-icon">&#9673;</div>
+      <h3>Fraud Detection</h3>
+      <p>Automated flags for synthetic P&Ls, shell accounts and more.</p>
+    </div>
+  </div>
+  <div class="pillar-detail show" id="pd0"><p>ATLAS examines up to three years of revenue data, calculating year-on-year growth rates and identifying <strong>volatility patterns</strong> that indicate distressed or manipulated financials. Thin-file businesses receive a conservative risk premium — protecting lenders from underdocumented applicants without excluding them entirely.</p></div>
+  <div class="pillar-detail" id="pd1"><p>Every SME is stress-tested against a <strong>debt-to-revenue ratio</strong> threshold. Businesses exceeding 1.2x leverage receive an automatic Toxic Leverage flag — surfaced directly on the dashboard before any loan officer reviews the file. This alone can prevent your most damaging NPLs.</p></div>
+  <div class="pillar-detail" id="pd2"><p>Where M-Pesa statements are available, ATLAS measures <strong>cash velocity</strong> — the longest gap between income credits, median account runway, and daily burn rate. Sector-aware multipliers adjust thresholds for Agriculture (seasonal) vs Retail (daily cash flow). Shell and dormant accounts are automatically flagged as AML risk.</p></div>
+  <div class="pillar-detail" id="pd3"><p>ATLAS runs seven proprietary heuristics including <strong>synthetic P&L detection</strong>, ghost company checks, and volatile cashflow traps. Each flag is labelled and exportable — giving your credit committee a documented, auditable reason for every decline.</p></div>
+</section>
+
+<section id="process">
+  <div class="sec-tag"><span class="sec-tag-line"></span>HOW IT WORKS</div>
+  <div class="sec-title">From upload to decision.<br>No black boxes.</div>
+  <p class="sec-sub">Every scoring decision in ATLAS is traceable. Your credit committee sees the reason, not just the verdict.</p>
+  <div class="process-steps">
+    <div class="pstep active" onclick="toggleStep(this)">
+      <div class="pstep-num">01</div>
+      <div style="flex:1">
+        <div class="pstep-title">Upload your SME portfolio</div>
+        <div class="pstep-body">Submit your portfolio as a standard Excel file. ATLAS auto-detects structure and cleans headers automatically — no reformatting, no technical setup required from your team.</div>
+      </div>
+      <div class="pstep-arrow">&#9658;</div>
+    </div>
+    <div class="pstep" onclick="toggleStep(this)">
+      <div class="pstep-num">02</div>
+      <div style="flex:1">
+        <div class="pstep-title">Multi-layer forensic analysis runs</div>
+        <div class="pstep-body">ATLAS processes financial history, open-banking data, and sector benchmarks simultaneously. The engine completes a full portfolio in under 60 seconds — no waiting, no batch queues.</div>
+      </div>
+      <div class="pstep-arrow">&#9658;</div>
+    </div>
+    <div class="pstep" onclick="toggleStep(this)">
+      <div class="pstep-num">03</div>
+      <div style="flex:1">
+        <div class="pstep-title">Fraud flags are raised automatically</div>
+        <div class="pstep-body">Before a loan officer sees the file, ATLAS has already run all fraud heuristics. Synthetic P&Ls, dormant accounts, and toxic leverage are surfaced with plain-language labels your team can cite in credit committee.</div>
+      </div>
+      <div class="pstep-arrow">&#9658;</div>
+    </div>
+    <div class="pstep" onclick="toggleStep(this)">
+      <div class="pstep-num">04</div>
+      <div style="flex:1">
+        <div class="pstep-title">Tiered recommendations delivered</div>
+        <div class="pstep-body">Every SME receives a score, a recommendation tier (Auto-Approve, Escalate, or Hard Decline), and a documented fraud status. Export the full report or act directly from the dashboard.</div>
+      </div>
+      <div class="pstep-arrow">&#9658;</div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="sec-tag"><span class="sec-tag-line"></span>PRICING</div>
+  <div class="sec-title">Credit-based. Scales with your volume.</div>
+  <p class="sec-sub">One credit equals one SME forensic scan. No subscriptions for pilots — buy what you need and scale as you grow.</p>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-tier">PILOT</div>
+      <div class="plan-headline">Evaluate before you commit</div>
+      <div class="plan-price">Custom quote &nbsp;·&nbsp; up to 100 scans</div>
+      <div class="plan-features">
+        <div class="feat"><div class="feat-dot"></div><span>Full dashboard access</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Excel report exports</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Onboarding call included</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Fraud detection active</span></div>
+      </div>
+      <button class="plan-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">GET A QUOTE</button>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">MOST REQUESTED</div>
+      <div class="plan-tier">INSTITUTIONAL</div>
+      <div class="plan-headline">For active lending cycles</div>
+      <div class="plan-price">Custom quote &nbsp;·&nbsp; 500–5,000 scans</div>
+      <div class="plan-features">
+        <div class="feat"><div class="feat-dot"></div><span>M-Pesa open-finance scoring</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Macro stress-test module</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Billing and quota dashboard</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Priority support</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Full fraud heuristics suite</span></div>
+      </div>
+      <button class="plan-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">REQUEST ACCESS</button>
+    </div>
+    <div class="plan">
+      <div class="plan-tier">ENTERPRISE</div>
+      <div class="plan-headline">Banks and DFIs</div>
+      <div class="plan-price">Negotiated &nbsp;·&nbsp; unlimited scans</div>
+      <div class="plan-features">
+        <div class="feat"><div class="feat-dot"></div><span>White-label deployment</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Custom scoring calibration</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>SLA agreement</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Dedicated account manager</span></div>
+      </div>
+      <button class="plan-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">CONTACT SALES</button>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-tag"><span class="sec-tag-line"></span>CONTACT</div>
+  <div class="sec-title">Request institutional access.</div>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <h3>AEGIS FINANCIAL SYSTEMS</h3>
+      <p>We work directly with lenders, MFIs, SACCOs, and development finance institutions across East Africa. All access is credentialed and reviewed before issuance.</p>
+      <div class="cinfo"><div class="cdot"></div><div class="ctext">Nairobi, Kenya</div></div>
+      <div class="cinfo"><div class="cdot"></div><div class="ctext">hello@aegisfinancial.co.ke</div></div>
+      <div class="cinfo"><div class="cdot"></div><div class="ctext">Response within 24 hours</div></div>
+      <div class="cinfo"><div class="cdot"></div><div class="ctext">Kenya Data Protection Act 2019 compliant</div></div>
+    </div>
+    <div>
+      <div class="cform" id="cform">
+        <div class="frow">
+          <div><label class="flabel">INSTITUTION NAME</label><input class="finput" type="text" placeholder="e.g. KCB Capital" id="f-inst"></div>
+          <div><label class="flabel">YOUR NAME</label><input class="finput" type="text" placeholder="Full name" id="f-name"></div>
+        </div>
+        <div><label class="flabel">WORK EMAIL</label><input class="finput" type="email" placeholder="you@institution.com" id="f-email"></div>
+        <div>
+          <label class="flabel">INSTITUTION TYPE</label>
+          <select class="finput" id="f-type">
+            <option value="" disabled selected>Select type</option>
+            <option>Commercial Bank</option>
+            <option>Microfinance Institution</option>
+            <option>SACCO / Credit Union</option>
+            <option>Development Finance Institution</option>
+            <option>Fintech Lender</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div><label class="flabel">APPROX. PORTFOLIO SIZE (SMEs/MONTH)</label><input class="finput" type="text" placeholder="e.g. 200" id="f-size"></div>
+        <div><label class="flabel">MESSAGE (OPTIONAL)</label><textarea class="finput" placeholder="Tell us about your current credit process..." id="f-msg"></textarea></div>
+        <button class="fsubmit" onclick="submitForm()">SUBMIT ACCESS REQUEST</button>
+      </div>
+      <div class="success-msg" id="success-msg">
+        Access request received.<br>Our team will contact you at your work email within 24 hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">AEGIS FINANCIAL SYSTEMS</div>
+  <div class="foot-copy">© 2026 AEGIS FINANCIAL SYSTEMS &nbsp;·&nbsp; NAIROBI, KENYA</div>
+</footer>
+
+<script>
+  function showPillar(i) {
+    document.querySelectorAll('.pillar').forEach((p, j) => p.classList.toggle('active', j === i));
+    document.querySelectorAll('.pillar-detail').forEach((d, j) => d.classList.toggle('show', j === i));
+  }
+  function toggleStep(el) {
+    const isActive = el.classList.contains('active');
+    document.querySelectorAll('.pstep').forEach(s => s.classList.remove('active'));
+    if (!isActive) el.classList.add('active');
+  }
+  function submitForm() {
+    const inst = document.getElementById('f-inst').value.trim();
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const type = document.getElementById('f-type').value;
+    if (!inst || !name || !email || !type) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    document.getElementById('cform').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
