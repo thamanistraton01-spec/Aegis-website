@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aegis Financial Systems | Credit Forensics for African Lenders</title>
-  <meta name="description" content="Aegis Financial Systems provides whitebox credit forensics and quantitative underwriting infrastructure for African lenders, SACCOs, and MFIs via the ATLAS engine.">
+  <title>Aegis Financial Systems | SME Credit Risk & Underwriting Nairobi</title>
+  <meta name="description" content="Aegis Financial Systems provides the ATLAS engine for African lenders. Explainable credit scoring, M-Pesa cashflow forensics, and fraud detection for Banks and SACCOs.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -21,14 +26,30 @@
       --text-faint: #334155;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text-secondary); line-height: 1.7; }
+    
+    /* Font updated to Inter */
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-secondary); line-height: 1.7; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
+
+    /* FADE IN ANIMATION CLASSES */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      visibility: hidden;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, visibility;
+    }
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: none;
+      visibility: visible;
+    }
 
     /* NAV */
     nav {
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.2rem 3rem; border-bottom: 1px solid var(--border);
-      background: var(--bg); position: sticky; top: 0; z-index: 100;
+      background: rgba(0, 5, 13, 0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
     }
     .brand-name { font-size: 17px; font-weight: 600; color: var(--text-primary); letter-spacing: 3px; }
     .brand-sub { font-size: 11px; color: var(--accent-dim); letter-spacing: 4px; margin-top: 2px; }
@@ -39,13 +60,13 @@
       border: 1px solid var(--accent-dim); color: var(--accent);
       padding: 10px 20px; border-radius: 6px; font-size: 13px; font-weight: 600;
       letter-spacing: 2px; cursor: pointer; background: transparent;
-      transition: background .2s; font-family: inherit;
+      transition: all .3s ease; font-family: inherit;
     }
-    .nav-cta:hover { background: #001833; }
+    .nav-cta:hover { background: #001833; transform: scale(1.02); box-shadow: 0 0 10px rgba(0,204,255,0.1); }
 
     /* TICKER */
-    .ticker-wrap { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: .9rem 0; overflow: hidden; background: var(--bg-card); }
-    .ticker { display: flex; gap: 3rem; animation: tick 28s linear infinite; white-space: nowrap; width: max-content; }
+    .ticker-wrap { border-bottom: 1px solid var(--border); padding: .9rem 0; overflow: hidden; background: var(--bg-card); }
+    .ticker { display: flex; gap: 3rem; animation: tick 35s linear infinite; white-space: nowrap; width: max-content; }
     @keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .tick-item { font-size: 12px; letter-spacing: 3px; color: var(--text-faint); display: flex; align-items: center; gap: .8rem; }
     .tick-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-dim); flex-shrink: 0; }
@@ -60,101 +81,113 @@
     .hero-inner { position: relative; z-index: 1; max-width: 850px; }
     .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 5px; color: var(--accent-dim); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
     .eyebrow-line { width: 32px; height: 1px; background: var(--accent-dim); }
-    .hero h1 { font-size: 52px; font-weight: 600; line-height: 1.15; color: var(--text-primary); margin-bottom: 1.8rem; }
+    .hero h1 { font-size: 52px; font-weight: 600; line-height: 1.15; color: var(--text-primary); margin-bottom: 1.8rem; letter-spacing: -1px; }
     .hero h1 em { color: var(--accent); font-style: normal; }
-    .hero-desc { font-size: 18px; color: var(--text-muted); line-height: 1.8; max-width: 700px; margin-bottom: 3rem; }
+    .hero-desc { font-size: 18px; color: var(--text-muted); line-height: 1.8; max-width: 700px; margin-bottom: 3rem; font-weight: 300; }
     .hero-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; }
     .btn-main {
-      background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-dim);
+      background: var(--accent-dim); color: var(--text-primary); border: 1px solid var(--accent-dim);
       padding: 15px 32px; border-radius: 6px; font-size: 14px; letter-spacing: 2px;
-      cursor: pointer; font-weight: 600; font-family: inherit; transition: all .2s;
+      cursor: pointer; font-weight: 600; font-family: inherit; transition: all .3s ease;
     }
-    .btn-main:hover { background: #005599; border-color: var(--accent); }
+    .btn-main:hover { background: #005599; border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3); }
     .btn-ghost {
       background: transparent; color: var(--text-muted); border: 1px solid var(--border);
       padding: 15px 32px; border-radius: 6px; font-size: 14px; letter-spacing: 2px;
-      cursor: pointer; font-weight: 600; font-family: inherit; transition: all .2s;
+      cursor: pointer; font-weight: 600; font-family: inherit; transition: all .3s ease;
     }
-    .btn-ghost:hover { color: var(--text-primary); border-color: var(--border-mid); }
-    .hero-stats { display: flex; margin-top: 5rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-    .hstat { flex: 1; padding: 1.5rem; border-right: 1px solid var(--border); text-align: center; }
+    .btn-ghost:hover { color: var(--text-primary); border-color: var(--border-mid); transform: translateY(-2px); }
+    
+    .hero-stats { display: flex; margin-top: 5rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: rgba(0, 13, 26, 0.5); backdrop-filter: blur(5px); }
+    .hstat { flex: 1; padding: 1.5rem; border-right: 1px solid var(--border); text-align: center; transition: background .3s; }
+    .hstat:hover { background: var(--bg-hover); }
     .hstat:last-child { border-right: none; }
     .hstat-num { font-size: 26px; font-weight: 600; color: var(--accent); }
-    .hstat-label { font-size: 12px; color: var(--text-faint); letter-spacing: 2px; margin-top: 6px; }
+    .hstat-label { font-size: 12px; color: var(--text-faint); letter-spacing: 2px; margin-top: 6px; font-weight: 500; }
 
     /* SECTIONS */
     section { padding: 6rem 3rem; border-bottom: 1px solid var(--border); }
     .sec-tag { font-size: 12px; font-weight: 600; letter-spacing: 4px; color: var(--accent-dim); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
     .sec-tag-line { width: 24px; height: 1px; background: var(--accent-dim); }
-    .sec-title { font-size: 36px; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.3; }
-    .sec-sub { font-size: 17px; color: var(--text-muted); line-height: 1.8; max-width: 650px; }
+    .sec-title { font-size: 36px; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.3; letter-spacing: -0.5px; }
+    .sec-sub { font-size: 17px; color: var(--text-muted); line-height: 1.8; max-width: 650px; font-weight: 300; }
 
     /* PILLARS */
     .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 3rem; }
-    .pillar { background: var(--bg-card); padding: 2rem 1.8rem; cursor: pointer; transition: background .2s; }
+    .pillar { background: var(--bg-card); padding: 2rem 1.8rem; cursor: pointer; transition: all .3s ease; }
     .pillar:hover, .pillar.active { background: var(--bg-hover); }
-    .pillar-icon { width: 38px; height: 38px; border-radius: 6px; background: #001833; border: 1px solid var(--accent-dim); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-size: 18px; }
+    .pillar.active { border-bottom: 2px solid var(--accent); }
+    .pillar-icon { width: 38px; height: 38px; border-radius: 6px; background: #001833; border: 1px solid var(--accent-dim); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-size: 18px; color: var(--accent); transition: transform .3s; }
+    .pillar:hover .pillar-icon { transform: scale(1.1); }
     .pillar h3 { font-size: 16px; font-weight: 600; color: #7adfff; letter-spacing: 1px; margin-bottom: .6rem; }
     .pillar p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
-    .pillar-detail { background: var(--bg-card); border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 2.5rem; display: none; }
+    .pillar-detail { background: var(--bg-card); border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 2.5rem; display: none; animation: slideDown 0.4s ease forwards; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     .pillar-detail.show { display: block; }
-    .pillar-detail p { font-size: 16px; color: var(--text-secondary); line-height: 1.8; }
+    .pillar-detail p { font-size: 16px; color: var(--text-secondary); line-height: 1.8; font-weight: 300; }
     .pillar-detail strong { color: var(--accent); font-weight: 500; }
 
     /* PROCESS */
     .process-steps { margin-top: 3rem; }
-    .pstep { display: flex; gap: 1.8rem; padding: 1.8rem 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+    .pstep { display: flex; gap: 1.8rem; padding: 1.8rem 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: background .3s; border-radius: 8px; padding-left: 1rem; padding-right: 1rem; }
+    .pstep:hover { background: rgba(0, 13, 26, 0.4); }
     .pstep:last-child { border-bottom: none; }
     .pstep-num { font-size: 13px; font-weight: 600; letter-spacing: 2px; color: var(--accent-dim); min-width: 32px; padding-top: 2px; }
     .pstep-title { font-size: 17px; font-weight: 500; color: var(--text-secondary); margin-bottom: .4rem; transition: color .2s; }
     .pstep:hover .pstep-title, .pstep.active .pstep-title { color: var(--accent); }
-    .pstep-body { font-size: 15px; color: var(--text-muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .pstep-body { font-size: 15px; color: var(--text-muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height .4s ease; font-weight: 300; }
     .pstep.active .pstep-body { max-height: 300px; padding-top: 8px; }
-    .pstep-arrow { font-size: 13px; color: var(--border-mid); transition: transform .2s; padding-top: 4px; }
+    .pstep-arrow { font-size: 13px; color: var(--border-mid); transition: transform .3s; padding-top: 4px; }
     .pstep.active .pstep-arrow { transform: rotate(90deg); color: var(--accent); }
+
+    /* QUOTE SECTION */
+    .quote-section { background: var(--bg-card); border-bottom: 1px solid var(--border); text-align: center; padding: 5rem 2rem; }
+    .quote-text { font-style: italic; font-size: 22px; color: var(--text-primary); font-weight: 300; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+    .quote-author { margin-top: 1.5rem; font-size: 13px; font-weight: 600; letter-spacing: 3px; color: var(--accent); }
 
     /* PRICING */
     .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-    .plan { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; }
-    .plan.featured { border-color: var(--accent-dim); }
+    .plan { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem 2rem; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; }
+    .plan:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0, 204, 255, 0.05); }
+    .plan.featured { border-color: var(--accent-dim); background: linear-gradient(180deg, rgba(0,24,51,0.4) 0%, var(--bg-card) 100%); }
     .plan-badge { font-size: 10px; font-weight: 600; letter-spacing: 3px; color: var(--accent); background: #001122; border: 1px solid var(--accent-dim); padding: 4px 14px; border-radius: 4px; display: inline-block; margin-bottom: 1.2rem; width: fit-content; }
     .plan-tier { font-size: 12px; font-weight: 600; letter-spacing: 3px; color: var(--text-faint); margin-bottom: .5rem; }
     .plan-headline { font-size: 17px; font-weight: 500; color: var(--text-primary); margin-bottom: .5rem; }
-    .plan-price { font-size: 14px; color: var(--text-muted); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-    .plan-features { display: flex; flex-direction: column; gap: .8rem; margin-bottom: 2rem; flex: 1; }
-    .feat { font-size: 14px; color: var(--text-muted); display: flex; gap: 10px; align-items: flex-start; }
-    .feat-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-dim); flex-shrink: 0; margin-top: 6px; }
-    .plan-btn { width: 100%; padding: 12px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); border-radius: 6px; font-size: 13px; font-weight: 600; letter-spacing: 2px; cursor: pointer; font-family: inherit; transition: all .2s; margin-top: auto; }
-    .plan.featured .plan-btn { border-color: var(--accent-dim); color: var(--accent); }
-    .plan-btn:hover { border-color: var(--accent-dim); color: var(--accent); }
+    .plan-price { font-size: 14px; color: var(--text-muted); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); font-weight: 300; }
+    .plan-features { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; flex: 1; }
+    .feat { font-size: 14px; color: var(--text-muted); display: flex; gap: 10px; align-items: flex-start; font-weight: 300; }
+    .feat-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-dim); flex-shrink: 0; margin-top: 8px; }
+    .plan-btn { width: 100%; padding: 14px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); border-radius: 6px; font-size: 13px; font-weight: 600; letter-spacing: 2px; cursor: pointer; font-family: inherit; transition: all .3s ease; margin-top: auto; }
+    .plan.featured .plan-btn { border-color: var(--accent-dim); color: var(--accent); background: rgba(0, 68, 136, 0.1); }
+    .plan-btn:hover { border-color: var(--accent); color: var(--text-primary); background: rgba(0, 204, 255, 0.1); }
 
     /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; margin-top: 3rem; }
     .contact-left h3 { font-size: 15px; font-weight: 600; color: #7adfff; letter-spacing: 2px; margin-bottom: 1rem; }
-    .contact-left p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; }
-    .cinfo { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+    .contact-left p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
+    .cinfo { display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem; }
     .cdot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-dim); flex-shrink: 0; }
-    .ctext { font-size: 14px; color: var(--text-faint); }
+    .ctext { font-size: 14px; color: var(--text-secondary); font-weight: 400; }
     .cform { display: flex; flex-direction: column; gap: 1.2rem; }
     .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     .flabel { font-size: 12px; font-weight: 600; letter-spacing: 2px; color: var(--text-faint); display: block; margin-bottom: 6px; }
     .finput {
       width: 100%; background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 6px; padding: 12px 15px; color: var(--text-primary);
-      font-size: 15px; outline: none; font-family: inherit; transition: border-color .2s;
+      border-radius: 6px; padding: 14px 15px; color: var(--text-primary);
+      font-size: 15px; outline: none; font-family: inherit; transition: all .3s ease;
     }
-    .finput:focus { border-color: var(--accent-dim); }
+    .finput:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(0,204,255,0.1); }
     select.finput option { background: var(--bg-card); font-size: 15px; }
-    textarea.finput { resize: none; height: 100px; }
+    textarea.finput { resize: none; height: 120px; }
     .fsubmit {
-      background: var(--accent-dim); border: 1px solid var(--accent); color: var(--accent);
-      padding: 15px; border-radius: 6px; font-size: 14px; font-weight: 600; letter-spacing: 2px;
-      cursor: pointer; width: 100%; font-family: inherit; transition: background .2s; margin-top: 1rem;
+      background: var(--accent-dim); border: 1px solid var(--accent); color: var(--text-primary);
+      padding: 16px; border-radius: 6px; font-size: 14px; font-weight: 600; letter-spacing: 2px;
+      cursor: pointer; width: 100%; font-family: inherit; transition: all .3s ease; margin-top: 1rem;
     }
-    .fsubmit:hover { background: #005599; }
+    .fsubmit:hover { background: #005599; box-shadow: 0 4px 12px rgba(0,102,204,0.3); }
 
     /* FOOTER */
-    footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
+    footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); background: #000206; }
     .foot-brand { font-size: 14px; font-weight: 600; letter-spacing: 3px; color: var(--text-faint); }
     .foot-copy { font-size: 12px; color: var(--text-faint); letter-spacing: 1px; }
 
@@ -170,6 +203,7 @@
       .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
       .frow { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .quote-text { font-size: 18px; }
     }
   </style>
 </head>
@@ -192,24 +226,24 @@
   <div class="ticker">
     <span class="tick-item"><span class="tick-dot"></span>WHITEBOX SCORING ENGINE</span>
     <span class="tick-item"><span class="tick-dot"></span>OPEN-FINANCE UNDERWRITING</span>
+    <span class="tick-item"><span class="tick-dot"></span>REAL-TIME CBK RISK WEIGHTING</span>
     <span class="tick-item"><span class="tick-dot"></span>SYNTHETIC P&L DETECTION</span>
     <span class="tick-item"><span class="tick-dot"></span>M-PESA CASH VELOCITY</span>
+    <span class="tick-item"><span class="tick-dot"></span>SACCO-SPECIFIC LIQUIDITY RATIOS</span>
     <span class="tick-item"><span class="tick-dot"></span>TOXIC LEVERAGE FLAGS</span>
-    <span class="tick-item"><span class="tick-dot"></span>SECTOR-AWARE BENCHMARKS</span>
     <span class="tick-item"><span class="tick-dot"></span>AUDIT-READY DECISIONS</span>
-    <span class="tick-item"><span class="tick-dot"></span>QUANTITATIVE UNDERWRITING</span>
     <span class="tick-item"><span class="tick-dot"></span>WHITEBOX SCORING ENGINE</span>
     <span class="tick-item"><span class="tick-dot"></span>OPEN-FINANCE UNDERWRITING</span>
+    <span class="tick-item"><span class="tick-dot"></span>REAL-TIME CBK RISK WEIGHTING</span>
     <span class="tick-item"><span class="tick-dot"></span>SYNTHETIC P&L DETECTION</span>
     <span class="tick-item"><span class="tick-dot"></span>M-PESA CASH VELOCITY</span>
+    <span class="tick-item"><span class="tick-dot"></span>SACCO-SPECIFIC LIQUIDITY RATIOS</span>
     <span class="tick-item"><span class="tick-dot"></span>TOXIC LEVERAGE FLAGS</span>
-    <span class="tick-item"><span class="tick-dot"></span>SECTOR-AWARE BENCHMARKS</span>
     <span class="tick-item"><span class="tick-dot"></span>AUDIT-READY DECISIONS</span>
-    <span class="tick-item"><span class="tick-dot"></span>QUANTITATIVE UNDERWRITING</span>
   </div>
 </div>
 
-<section class="hero">
+<section class="hero fade-in-section">
   <div class="hero-grid-bg"></div>
   <div class="hero-inner">
     <div class="eyebrow"><span class="eyebrow-line"></span>INSTITUTIONAL CREDIT FORENSICS</div>
@@ -228,27 +262,27 @@
   </div>
 </section>
 
-<section id="forensics">
+<section id="forensics" class="fade-in-section">
   <div class="sec-tag"><span class="sec-tag-line"></span>THE ATLAS ENGINE</div>
   <div class="sec-title">Four forensic pillars.<br>One risk decision.</div>
   <p class="sec-sub">Click each pillar to understand exactly what the ATLAS engine analyzes behind the scenes—and why it matters to your credit committee's bottom line.</p>
   <div class="pillars">
-    <div class="pillar active" onclick="showPillar(0)">
+    <div class="pillar active" onclick="showPillar(0)" aria-label="Financial History">
       <div class="pillar-icon">&#9783;</div>
       <h3>Financial History</h3>
       <p>Multi-year revenue trajectory and synthetic pattern analysis.</p>
     </div>
-    <div class="pillar" onclick="showPillar(1)">
+    <div class="pillar" onclick="showPillar(1)" aria-label="Leverage Forensics">
       <div class="pillar-icon">&#8771;</div>
       <h3>Leverage Forensics</h3>
       <p>Debt Service Coverage constraints and sector stress testing.</p>
     </div>
-    <div class="pillar" onclick="showPillar(2)">
+    <div class="pillar" onclick="showPillar(2)" aria-label="Cash Velocity">
       <div class="pillar-icon">&#9650;</div>
       <h3>Cash Velocity</h3>
       <p>Open-finance M-Pesa Till flow and median runway scoring.</p>
     </div>
-    <div class="pillar" onclick="showPillar(3)">
+    <div class="pillar" onclick="showPillar(3)" aria-label="Fraud Detection">
       <div class="pillar-icon">&#9673;</div>
       <h3>Fraud Detection</h3>
       <p>Automated heuristics for synthetic P&Ls and shell accounts.</p>
@@ -268,7 +302,7 @@
   </div>
 </section>
 
-<section id="process">
+<section id="process" class="fade-in-section">
   <div class="sec-tag"><span class="sec-tag-line"></span>HOW IT WORKS</div>
   <div class="sec-title">From upload to decision.<br>No API integration required.</div>
   <p class="sec-sub">Bypass your IT backlog. ATLAS operates as a secure, independent terminal, allowing your risk team to generate insights immediately.</p>
@@ -308,7 +342,12 @@
   </div>
 </section>
 
-<section id="pricing">
+<div class="quote-section fade-in-section">
+  <p class="quote-text">"We didn't build another black-box AI. We built a mathematical mirror for the African economy to allow lenders to scale with certainty."</p>
+  <div class="quote-author">THAMANI STRATON &nbsp;·&nbsp; FOUNDER & CEO</div>
+</div>
+
+<section id="pricing" class="fade-in-section">
   <div class="sec-tag"><span class="sec-tag-line"></span>PRICING</div>
   <div class="sec-title">Credit-based. Scales with your volume.</div>
   <p class="sec-sub">One ATLAS credit equals one SME forensic scan. We do not charge recurring software subscriptions for pilots—you only pay for the exact volume of risk analysis you need.</p>
@@ -354,7 +393,7 @@
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="fade-in-section">
   <div class="sec-tag"><span class="sec-tag-line"></span>CONTACT</div>
   <div class="sec-title">Request institutional access.</div>
   <div class="contact-grid">
@@ -362,8 +401,9 @@
       <h3>AEGIS FINANCIAL SYSTEMS</h3>
       <p>We work directly with lenders, MFIs, SACCOs, and development finance institutions across East Africa. All terminal access is strictly credentialed and reviewed by our engineering team before issuance.</p>
       <div class="cinfo"><div class="cdot"></div><div class="ctext">Nairobi, Kenya</div></div>
-      <div class="cinfo"><div class="cdot"></div><div class="ctext">hello@aegisfinancial.co.ke</div></div>
-      <div class="cinfo"><div class="cdot"></div><div class="ctext">Engineering response within 24 hours</div></div>
+      <div class="cinfo"><div class="cdot"></div><div class="ctext">contact@aegisfinancialsystems.com</div></div>
+      <div class="cinfo"><div class="cdot"></div><div class="ctext">+254 705 409 607</div></div>
+      <div class="cinfo"><div class="cdot"></div><div class="ctext">Our team responds within 24 hours</div></div>
       <div class="cinfo"><div class="cdot"></div><div class="ctext">Kenya Data Protection Act 2019 Compliant</div></div>
     </div>
     <div>
@@ -397,19 +437,44 @@
 
 <footer>
   <div class="foot-brand">AEGIS FINANCIAL SYSTEMS</div>
-  <div class="foot-copy">© 2026 AEGIS FINANCIAL SYSTEMS &nbsp;·&nbsp; NAIROBI, KENYA</div>
+  <div class="foot-copy">© 2026 AEGIS FINANCIAL SYSTEMS &nbsp;·&nbsp; aegisfinancialsystems.com</div>
 </footer>
 
 <script>
+  // Pillar interactivity
   function showPillar(i) {
     document.querySelectorAll('.pillar').forEach((p, j) => p.classList.toggle('active', j === i));
     document.querySelectorAll('.pillar-detail').forEach((d, j) => d.classList.toggle('show', j === i));
   }
+  
+  // Process Steps interactivity
   function toggleStep(el) {
     const isActive = el.classList.contains('active');
     document.querySelectorAll('.pstep').forEach(s => s.classList.remove('active'));
     if (!isActive) el.classList.add('active');
   }
+
+  // Scroll Fade-in Animation Observer
+  document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-section').forEach(section => {
+      observer.observe(section);
+    });
+  });
 </script>
 
 </body>
